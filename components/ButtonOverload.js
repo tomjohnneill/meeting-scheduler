@@ -5,7 +5,7 @@ const ButtonOverload = ({ handleClick }) => {
 
   const handleFirstClick = () => {
     const buttons = [];
-    for (let i = 0; i < 20; i += 1) {
+    for (let i = 0; i < 50; i += 1) {
       buttons.push({
         key: i,
         x: Math.random() * window.innerWidth,
@@ -16,7 +16,7 @@ const ButtonOverload = ({ handleClick }) => {
   };
 
   const handleExtraClick = (key) => {
-    if (key !== 7) {
+    if (key % 7 !== 1) {
       setExtras(
         extras
           .filter((item) => item.key !== key)

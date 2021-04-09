@@ -7,6 +7,7 @@ import PrewrittenTweet from "../components/PrewrittenTweet";
 import ButtonOverload from "../components/ButtonOverload";
 import Maze from "../components/Maze";
 import Switcheroo from "../components/Switcheroo";
+import GrowingShrinking from "../components/GrowingShrinking";
 
 export default function Home() {
   const [game, setGame] = useState(1);
@@ -20,7 +21,7 @@ export default function Home() {
   const renderGame = () => {
     switch (game) {
       case 1:
-        return <ButtonDodge handleClick={advanceGame} />;
+        return <GrowingShrinking handleClick={advanceGame} />;
       case 2:
         return <HiddenCursor handleClick={advanceGame} />;
       case 3:
