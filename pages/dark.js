@@ -23,11 +23,13 @@ export default function Dark() {
   return (
     <div className="h-screen w-screen relative bg-yellow-100">
       <h1 className="text-white absolute top-0 w-full text-center z-50">
-        FIND THE BUTTON
+        FIND THE BUTTON AND GET A COOKIE
       </h1>
       <button
         onClick={() => {
-          console.log("clicked");
+          window.alert("Congrats! check your cookies tab for your free cookie");
+          document.cookie =
+            "cookie=https://www.bbcgoodfood.com/recipes/vintage-chocolate-chip-cookies";
         }}
         className="w-auto p-2 rounded-lg bg-blue-500 text-white absolute bottom-36 right-48 text-sm"
       >
