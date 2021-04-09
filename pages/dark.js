@@ -33,10 +33,10 @@ export default function Dark() {
       >
         Congrats you found me!
       </button>
-      <div className="overlay absolute h-screen w-screen absolute top-0">
+      <div className="overlay absolute h-screen w-screen absolute top-0 pointer-events-none">
         <div
           ref={lookingGlassRef}
-          className="looking-glass absolute rounded-full w-10 h-10 bg-white bottom-24 right-36"
+          className="looking-glass absolute rounded-full w-10 h-10 bg-white bottom-24 right-36 pointer-events-none"
           style={{
             top: `calc(${mousePosition.y}px - 1.25rem)`,
             left: `calc(${mousePosition.x}px - 1.25rem)`,
