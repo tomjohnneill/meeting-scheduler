@@ -10,6 +10,7 @@ import Switcheroo from "../components/Switcheroo";
 import GrowingShrinking from "../components/GrowingShrinking";
 import StIves from "../components/StIves";
 import AreYouRobot from "../components/AreYouRobot";
+import MontyHall from "../components/MontyHall";
 
 export default function Home() {
   const [game, setGame] = useState(1);
@@ -23,17 +24,25 @@ export default function Home() {
   const renderGame = () => {
     switch (game) {
       case 1:
-        return <GrowingShrinking handleClick={advanceGame} />;
+        return <ButtonDodge handleClick={advanceGame} />;
       case 2:
-        return <HiddenCursor handleClick={advanceGame} />;
+        return <GrowingShrinking handleClick={advanceGame} />;
       case 3:
-        return <ButtonOverload handleClick={advanceGame} />;
+        return <HiddenCursor handleClick={advanceGame} />;
       case 4:
         return <Switcheroo handleClick={advanceGame} />;
       case 5:
-        return <PrewrittenTweet handleClick={advanceGame} />;
+        return <ButtonOverload handleClick={advanceGame} />;
       case 6:
+        return <PrewrittenTweet handleClick={advanceGame} />;
+      case 7:
         return <Maze handleClick={advanceGame} />;
+      case 8:
+        return <MontyHall handleClick={advanceGame} />;
+      case 9:
+        return <StIves handleClick={advanceGame} />;
+      default:
+        return <AreYouRobot />;
     }
   };
 
@@ -45,9 +54,12 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+        <img
+          src="https://img.favpng.com/0/9/22/calendar-date-dating-clip-art-png-favpng-ihHy3CafNW2MSiY3hBAPsZ9a3.jpg"
+          className="h-48"
+        />
+        <h1 className="text-4xl my-2">Hi Karen,</h1>
+        <h1 className="text-2xl my-4">Can you meet next Tuesday at 4?</h1>
 
         {renderGame()}
       </main>
