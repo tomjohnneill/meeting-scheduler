@@ -8,6 +8,7 @@ import ButtonOverload from "../components/ButtonOverload";
 import Maze from "../components/Maze";
 import Switcheroo from "../components/Switcheroo";
 import GrowingShrinking from "../components/GrowingShrinking";
+import StIves from "../components/StIves";
 
 export default function Home() {
   const [game, setGame] = useState(1);
@@ -21,7 +22,7 @@ export default function Home() {
   const renderGame = () => {
     switch (game) {
       case 1:
-        return <GrowingShrinking handleClick={advanceGame} />;
+        return <StIves handleClick={advanceGame} />;
       case 2:
         return <HiddenCursor handleClick={advanceGame} />;
       case 3:
