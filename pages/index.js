@@ -23,7 +23,7 @@ export default function Home() {
   const renderGame = () => {
     switch (game) {
       case 1:
-        return <AreYouRobot handleClick={advanceGame} />;
+        return <GrowingShrinking handleClick={advanceGame} />;
       case 2:
         return <HiddenCursor handleClick={advanceGame} />;
       case 3:
