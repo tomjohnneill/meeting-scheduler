@@ -30,7 +30,7 @@ const ButtonDodge = ({ handleClick }) => {
     <div className="flex">
       <button
         onClick={() => handleClick("No")}
-        onMouseEnter={() => setDodges(dodges + 1)}
+        // onMouseEnter={() => setDodges(dodges + 1)}
         className="px-2 py-1 border rounded border-gray-300 opacity-80 text-gray-600 transition-all"
         style={{
           transform: translation ? `translate(${translation})` : "none",
