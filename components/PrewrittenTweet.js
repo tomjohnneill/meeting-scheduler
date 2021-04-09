@@ -1,5 +1,4 @@
-const text =
-  "Upon further consideration, yes I do think the world revolves around me.";
+const text = "Actually yes, the world does revolve around me.";
 
 const PrewrittenTweet = ({ handleClick }) => {
   return (

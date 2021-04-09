@@ -37,7 +37,7 @@ const ButtonOverload = ({ handleClick }) => {
         <button
           key={item.key}
           style={{ top: item.y, left: item.x }}
-          className="absolute px-2 py-1 border rounded border-gray-300 opacity-80 text-gray-600 transition-all"
+          className="absolute px-2 py-1 border rounded border-gray-300 opacity-80 bg-white text-gray-600 transition-all"
           onClick={() => handleExtraClick(item.key)}
         >
           No
