@@ -3,7 +3,7 @@ import Square from "./MazeSquare";
 
 const SIZE = 30;
 
-const Maze = () => {
+const Maze = ({ handleClick }) => {
   const [gameOver, setGameOver] = useState(false);
 
   const handleLose = () => {
