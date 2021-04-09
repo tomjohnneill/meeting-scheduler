@@ -11,6 +11,8 @@ import GrowingShrinking from "../components/GrowingShrinking";
 import StIves from "../components/StIves";
 import AreYouRobot from "../components/AreYouRobot";
 import MontyHall from "../components/MontyHall";
+import PowerBar from "../components/PowerBar";
+import Roulette from "../components/Roulette";
 
 export default function Home() {
   const [game, setGame] = useState(1);
@@ -21,28 +23,54 @@ export default function Home() {
     }
   };
 
+  // To do: replace St Ives with Dark
+  // Add ads
+
   const renderGame = () => {
     switch (game) {
       case 1:
-        return <ButtonDodge handleClick={advanceGame} />;
+        return <Roulette handleClick={advanceGame} />;
       case 2:
         return <GrowingShrinking handleClick={advanceGame} />;
       case 3:
         return <HiddenCursor handleClick={advanceGame} />;
       case 4:
-        return <Switcheroo handleClick={advanceGame} />;
-      case 5:
         return <ButtonOverload handleClick={advanceGame} />;
-      case 6:
+      case 5:
         return <PrewrittenTweet handleClick={advanceGame} />;
-      case 7:
+      case 6:
         return <Maze handleClick={advanceGame} />;
+      case 7:
+        return <PowerBar handleClick={advanceGame} />;
       case 8:
-        return <MontyHall handleClick={advanceGame} />;
-      case 9:
         return <StIves handleClick={advanceGame} />;
       default:
         return <AreYouRobot />;
+    }
+  };
+
+  const renderText = () => {
+    switch (game) {
+      case 1:
+        return "Hi Karen, can you meet next Tuesday at 4?";
+      case 2:
+        return "That's annoying, how about Wednesday at 3?";
+      case 3:
+        return "Really? It would be good to get something in the diary soon. How about Thursday at 11?";
+      case 4:
+        return "You're being a bit difficult now. How about Friday at 9:30?";
+      case 5:
+        return "Now you're just taking the piss. What about Monday at 12:30?";
+      case 6:
+        return "What about Tuesday at 2? Or do you have someone more important to meet?";
+      case 7:
+        return "Surely at this point it's just easier to say yes? Wednesday at 4?";
+      case 8:
+        return "Come on now, don't be a dick, let's do Thursday at 11:30?";
+      case 9:
+        return "This is just pissing me off. Friday at 4?";
+      default:
+        return "OK fine. I'll send an email instead";
     }
   };
 
@@ -58,8 +86,7 @@ export default function Home() {
           src="https://img.favpng.com/0/9/22/calendar-date-dating-clip-art-png-favpng-ihHy3CafNW2MSiY3hBAPsZ9a3.jpg"
           className="h-48"
         />
-        <h1 className="text-4xl my-2">Hi Karen,</h1>
-        <h1 className="text-2xl my-4">Can you meet next Tuesday at 4?</h1>
+        <h1 className="text-2xl my-4">{renderText()}</h1>
 
         {renderGame()}
       </main>
