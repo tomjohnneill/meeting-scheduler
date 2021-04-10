@@ -137,7 +137,9 @@ const Maze = ({ handleClick }) => {
         </div>
       </div>
       <div className="block">
-        <button className="btn-blue">Yes</button>
+        <button className="btn-blue" onClick={() => handleClick("Yes")}>
+          Yes
+        </button>
       </div>
     </div>
   );

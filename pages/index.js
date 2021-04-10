@@ -13,13 +13,17 @@ import AreYouRobot from "../components/AreYouRobot";
 import MontyHall from "../components/MontyHall";
 import PowerBar from "../components/PowerBar";
 import Roulette from "../components/Roulette";
+import Accept from "../components/Accept";
 
 export default function Home() {
   const [game, setGame] = useState(1);
+  const [accept, setAccept] = useState(false);
 
   const advanceGame = (response) => {
     if (response === "No") {
       setGame(game + 1);
+    } else {
+      setAccept(true);
     }
   };
 
@@ -29,20 +33,22 @@ export default function Home() {
   const renderGame = () => {
     switch (game) {
       case 1:
-        return <Roulette handleClick={advanceGame} />;
+        return <StIves handleClick={advanceGame} />;
       case 2:
         return <GrowingShrinking handleClick={advanceGame} />;
       case 3:
-        return <HiddenCursor handleClick={advanceGame} />;
+        return <AreYouRobot handleClick={advanceGame} />;
       case 4:
-        return <ButtonOverload handleClick={advanceGame} />;
+        return <HiddenCursor handleClick={advanceGame} />;
       case 5:
-        return <PrewrittenTweet handleClick={advanceGame} />;
+        return <ButtonOverload handleClick={advanceGame} />;
       case 6:
-        return <Maze handleClick={advanceGame} />;
+        return <PrewrittenTweet handleClick={advanceGame} />;
       case 7:
-        return <PowerBar handleClick={advanceGame} />;
+        return <Maze handleClick={advanceGame} />;
       case 8:
+        return <PowerBar handleClick={advanceGame} />;
+      case 9:
         return <StIves handleClick={advanceGame} />;
       default:
         return <AreYouRobot />;
@@ -84,21 +90,31 @@ export default function Home() {
       <main className={styles.main}>
         <img
           src="https://img.favpng.com/0/9/22/calendar-date-dating-clip-art-png-favpng-ihHy3CafNW2MSiY3hBAPsZ9a3.jpg"
-          className="h-48"
+          className="h-24"
         />
-        <h1 className="text-2xl my-4">{renderText()}</h1>
+        {accept ? (
+          <Accept />
+        ) : (
+          <>
+            <h1 className="text-2xl my-4">{renderText()}</h1>
 
-        {renderGame()}
+            {renderGame()}
+          </>
+        )}
       </main>
 
       <footer className={styles.footer}>
         <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          href="https://notfunatparties.substack.com?utm_source=meeting-scheduler&utm_medium=software&utm_campaign=meeting-scheduler"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{" "}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
+          <img
+            src="https://cdn.substack.com/image/fetch/w_96,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F73dcc820-91b0-4c39-9a88-a99e897b155b_120x120.png"
+            alt="Vercel Logo"
+            className={styles.logo}
+          />
+          <span className="ml-2">Made by Not Fun at Parties</span>
         </a>
       </footer>
     </div>
