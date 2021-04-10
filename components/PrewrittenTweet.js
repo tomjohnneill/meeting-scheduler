@@ -2,7 +2,7 @@ const text = "Actually yes, the world does revolve around me.";
 
 const PrewrittenTweet = ({ handleClick }) => {
   return (
-    <div className="flex">
+    <div className="grid grid-cols-2 gap-4">
       <a
         rel="noopener noreferrer"
         target="_blank"
@@ -10,10 +10,7 @@ const PrewrittenTweet = ({ handleClick }) => {
           text
         )}`}
       >
-        <button
-          onClick={() => handleClick("No")}
-          className="px-2 py-1 border rounded border-gray-300 opacity-80 text-gray-600 transition-all"
-        >
+        <button onClick={() => handleClick("No")} className="no-button">
           No
         </button>
       </a>

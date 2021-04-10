@@ -14,6 +14,8 @@ import MontyHall from "../components/MontyHall";
 import PowerBar from "../components/PowerBar";
 import Roulette from "../components/Roulette";
 import Accept from "../components/Accept";
+import Dark from "../components/dark";
+import { FaRegCalendarAlt } from "react-icons/fa";
 
 export default function Home() {
   const [game, setGame] = useState(1);
@@ -33,7 +35,7 @@ export default function Home() {
   const renderGame = () => {
     switch (game) {
       case 1:
-        return <StIves handleClick={advanceGame} />;
+        return <ButtonDodge handleClick={advanceGame} />;
       case 2:
         return <GrowingShrinking handleClick={advanceGame} />;
       case 3:
@@ -51,7 +53,7 @@ export default function Home() {
       case 9:
         return <StIves handleClick={advanceGame} />;
       default:
-        return <AreYouRobot />;
+        return null;
     }
   };
 
@@ -76,30 +78,40 @@ export default function Home() {
       case 9:
         return "This is just pissing me off. Friday at 4?";
       default:
-        return "OK fine. I'll send an email instead";
+        return "OK fine. I'll send an email instead.";
     }
   };
 
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <img
-          src="https://img.favpng.com/0/9/22/calendar-date-dating-clip-art-png-favpng-ihHy3CafNW2MSiY3hBAPsZ9a3.jpg"
-          className="h-24"
-        />
-        {accept ? (
-          <Accept />
+      <main className="flex flex-col items-center min-h-screen">
+        {game === 5 ? (
+          <Dark handleClick={advanceGame} text={renderText()} />
         ) : (
-          <>
-            <h1 className="text-2xl my-4">{renderText()}</h1>
+          <div className="min-h-screen w-full bg-gray-50 flex flex-col items-center">
+            <div className="flex items-center text-white py-4 border-b border-gray-300 w-full justify-center bg-gray-800 shadow-lg">
+              <FaRegCalendarAlt className="h-16 text-4xl mr-4" />
+              <h1 className="text-4xl font-bold">I'm booking you.</h1>
+            </div>
+            <div className="mt-32 max-w-2xl shadow-lg border border-gray-100 rounded-lg bg-white w-full m-auto p-4 flex flex-col items-center pb-8">
+              {accept ? (
+                <Accept />
+              ) : (
+                <>
+                  <h1 className="text-2xl font-medium my-6 text-center">
+                    {renderText()}
+                  </h1>
 
-            {renderGame()}
-          </>
+                  {renderGame()}
+                </>
+              )}
+            </div>
+          </div>
         )}
       </main>
 

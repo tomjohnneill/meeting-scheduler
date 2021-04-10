@@ -16,32 +16,32 @@ const useMousePosition = () => {
   return mousePosition;
 };
 
-export default function Dark() {
+export default function Dark({ handleClick, text }) {
   const lookingGlassRef = useRef();
   const mousePosition = useMousePosition();
 
   return (
-    <div className="h-screen w-screen relative bg-yellow-100">
-      <h1 className="text-white absolute top-0 w-full text-center z-50">
-        FIND THE BUTTON AND GET A COOKIE
-      </h1>
+    <div className="h-screen w-full relative bg-yellow-100 text-white">
+      <div className="text-white absolute top-0 w-full text-center z-50 flex flex-col items-center">
+        <h1 className="text-white text-2xl my-4">{text}</h1>
+        <button className="btn-blue mt-16">Yes</button>
+      </div>
+
       <button
         onClick={() => {
-          window.alert("Congrats! check your cookies tab for your free cookie");
-          document.cookie =
-            "cookie=https://www.bbcgoodfood.com/recipes/vintage-chocolate-chip-cookies";
+          handleClick("No");
         }}
-        className="w-auto p-2 rounded-lg bg-blue-500 text-white absolute bottom-36 right-48 text-sm"
+        className="w-auto px-2 py-1 border rounded border-gray-300 opacity-80 text-gray-600 absolute bottom-36 right-48 bg-white"
       >
-        Congrats you found me!
+        No
       </button>
       <div className="overlay absolute h-screen w-screen absolute top-0 pointer-events-none">
         <div
           ref={lookingGlassRef}
-          className="looking-glass absolute rounded-full w-10 h-10 bg-white bottom-24 right-36 pointer-events-none"
+          className="looking-glass absolute rounded-full w-16 h-16 bg-white bottom-24 right-36 pointer-events-none"
           style={{
-            top: `calc(${mousePosition.y}px - 1.25rem)`,
-            left: `calc(${mousePosition.x}px - 1.25rem)`,
+            top: `calc(${mousePosition.y}px - 2rem)`,
+            left: `calc(${mousePosition.x}px - 2rem)`,
           }}
         ></div>
       </div>
