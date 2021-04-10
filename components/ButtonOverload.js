@@ -54,7 +54,10 @@ const ButtonOverload = ({ handleClick }) => {
           </button>
         )}
 
-        <button className="px-2 py-1 rounded bg-red-500 opacity-80 text-white">
+        <button
+          onClick={() => handleClick("Yes")}
+          className="px-2 py-1 rounded bg-red-500 opacity-80 text-white"
+        >
           Yes
         </button>
       </div>

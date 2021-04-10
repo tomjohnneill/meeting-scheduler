@@ -4,7 +4,7 @@ const GrowingShrinking = ({ handleClick }) => {
   const [grow, setGrow] = useState(false);
 
   return (
-    <div className="flex mt-48">
+    <div className="flex ">
       <div className="p-16" onMouseEnter={() => setGrow(true)}>
         <button
           onClick={() => handleClick("No")}
