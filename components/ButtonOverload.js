@@ -37,27 +37,21 @@ const ButtonOverload = ({ handleClick }) => {
         <button
           key={item.key}
           style={{ top: item.y, left: item.x }}
-          className="absolute px-2 py-1 border rounded border-gray-300 opacity-80 bg-white text-gray-600 transition-all"
+          className="absolute no-button"
           onClick={() => handleExtraClick(item.key)}
         >
           No
         </button>
       ))}
 
-      <div className="flex">
+      <div className="grid grid-cols-2 gap-4">
         {extras.length === 0 && (
-          <button
-            onClick={handleFirstClick}
-            className="px-2 py-1 border rounded border-gray-300 opacity-80 text-gray-600 transition-all"
-          >
+          <button onClick={handleFirstClick} className="no-button">
             No
           </button>
         )}
 
-        <button
-          onClick={() => handleClick("Yes")}
-          className="px-2 py-1 rounded bg-red-500 opacity-80 text-white"
-        >
+        <button onClick={() => handleClick("Yes")} className="yes-button">
           Yes
         </button>
       </div>

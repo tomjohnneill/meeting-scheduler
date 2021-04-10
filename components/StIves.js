@@ -52,7 +52,7 @@ const StIves = ({ handleClick }) => {
               type="submit"
               onClick={handleCheck}
               value="Answer"
-              className="px-2 py-1 bg-blue-600 opacity-80 rounded  opacity-80 text-white transition-all"
+              className="cursor-pointer hover:bg-blue-700 px-2 py-1 bg-blue-600 opacity-80 rounded  opacity-80 text-white transition-all"
             />
           </form>
           {wrong && (
@@ -67,10 +67,7 @@ const StIves = ({ handleClick }) => {
         </button>
       )}
       <div className="block">
-        <button
-          onClick={() => handleClick("Yes")}
-          className="px-2 py-1 my-2 rounded bg-red-500 opacity-80 text-white transition-all"
-        >
+        <button onClick={() => handleClick("Yes")} className="yes-button ml-4">
           Yes
         </button>
       </div>

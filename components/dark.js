@@ -23,25 +23,27 @@ export default function Dark({ handleClick, text }) {
   return (
     <div className="h-screen w-full relative bg-yellow-100 text-white">
       <div className="text-white absolute top-0 w-full text-center z-50 flex flex-col items-center">
-        <h1 className="text-white text-2xl my-4">{text}</h1>
-        <button className="btn-blue mt-16">Yes</button>
+        <h1 className="text-white text-2xl my-4 mt-16">{text}</h1>
+        <button className="yes-button mt-16" onClick={() => handleClick("Yes")}>
+          Yes
+        </button>
       </div>
 
       <button
         onClick={() => {
           handleClick("No");
         }}
-        className="w-auto px-2 py-1 border rounded border-gray-300 opacity-80 text-gray-600 absolute bottom-36 right-48 bg-white"
+        className="no-button absolute bottom-36 right-48 bg-white"
       >
         No
       </button>
       <div className="overlay absolute h-screen w-screen absolute top-0 pointer-events-none">
         <div
           ref={lookingGlassRef}
-          className="looking-glass absolute rounded-full w-16 h-16 bg-white bottom-24 right-36 pointer-events-none"
+          className="looking-glass absolute rounded-full w-32 h-32 bg-white bottom-24 right-36 pointer-events-none"
           style={{
-            top: `calc(${mousePosition.y}px - 2rem)`,
-            left: `calc(${mousePosition.x}px - 2rem)`,
+            top: `calc(${mousePosition.y}px - 4rem)`,
+            left: `calc(${mousePosition.x}px - 4rem)`,
           }}
         ></div>
       </div>

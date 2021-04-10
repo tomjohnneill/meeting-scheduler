@@ -5,10 +5,10 @@ const GrowingShrinking = ({ handleClick }) => {
 
   return (
     <div className="grid grid-cols-2 gap-4">
-      <div className="p-16" onMouseEnter={() => setGrow(true)}>
+      <div className="p-16" onMouseOver={() => setGrow(true)}>
         <button
           onClick={() => handleClick("No")}
-          className="no-button"
+          className="no-button delay-500"
           style={{ transform: grow ? "scale(0.4)" : "none" }}
         >
           No
@@ -16,8 +16,9 @@ const GrowingShrinking = ({ handleClick }) => {
       </div>
       <div className="p-16">
         <button
+          onClick={() => handleClick("Yes")}
           style={{ transform: grow ? "scale(2.5)" : "none" }}
-          className="px-2 py-1 rounded bg-red-500 opacity-80 text-white transition-all"
+          className="yes-button delay-500"
         >
           Yes
         </button>

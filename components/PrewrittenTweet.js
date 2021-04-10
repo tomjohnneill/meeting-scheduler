@@ -14,10 +14,7 @@ const PrewrittenTweet = ({ handleClick }) => {
           No
         </button>
       </a>
-      <button
-        onClick={() => handleClick("Yes")}
-        className="px-2 py-1 rounded bg-red-500 opacity-80 text-white"
-      >
+      <button onClick={() => handleClick("Yes")} className="yes-button">
         Yes
       </button>
     </div>

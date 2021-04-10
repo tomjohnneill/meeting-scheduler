@@ -39,7 +39,10 @@ const Captcha = ({ handleClick }) => {
         ))}
       </div>
       <div className="py-4 ">
-        <button className="btn-blue float-right" onClick={handleVerify}>
+        <button
+          className="px-3 py-1 text-white rounded opacity-80 bg-blue-600 hover:bg-blue-700 float-right"
+          onClick={handleVerify}
+        >
           {Object.values(squares).filter((item) => item).length > 0
             ? "Verify"
             : "Skip"}
@@ -63,7 +66,10 @@ const AreYouRobot = ({ handleClick }) => {
           </button>
         )}
         <div className="block">
-          <button className="px-2 py-1 rounded bg-red-500 opacity-80 text-white ml-8">
+          <button
+            onClick={() => handleClick("Yes")}
+            className="yes-button ml-8"
+          >
             Yes
           </button>
         </div>

@@ -30,18 +30,15 @@ const PowerBar = ({ handleClick }) => {
             No
           </button>
         </div>
-        <button
-          onClick={() => handleClick("Yes")}
-          className="px-2 py-1 rounded bg-red-500 opacity-80 text-white"
-        >
+        <button onClick={() => handleClick("Yes")} className="yes-button">
           Yes
         </button>
       </div>
       <div className="relative pt-1 w-64">
-        <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-red-200 w-full">
+        <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-200 w-full">
           <div
             style={{ width: `${Math.max(power, 0)}%` }}
-            className="transition-all shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
+            className="transition-all shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500"
           ></div>
         </div>
       </div>

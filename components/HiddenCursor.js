@@ -5,13 +5,13 @@ const HiddenCursor = ({ handleClick }) => {
         <button
           onClick={() => handleClick("No")}
           style={{ cursor: "none" }}
-          className="no-button"
+          className="no-button hover:bg-white"
         >
           No
         </button>
       </div>
       <div className="py-24 px-8" onClick={() => handleClick("Yes")}>
-        <button className="btn-blue block">Yes</button>
+        <button className="yes-button block">Yes</button>
       </div>
     </div>
   );

@@ -38,12 +38,10 @@ const links = [
   },
 ];
 
-const Accept = () => {
+const Accept = ({ text }) => {
   return (
     <div>
-      <h1 className="text-2xl my-8 w-full text-center">
-        That wasn't too hard was it.
-      </h1>
+      <h1 className="text-2xl my-8 w-full text-center">{text}</h1>
 
       <h2 className="w-full text-center text-xl font-bold my-4">
         Add to your calendar
