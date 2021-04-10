@@ -62,10 +62,7 @@ const StIves = ({ handleClick }) => {
           )}
         </div>
       ) : (
-        <button
-          onClick={handleNoClick}
-          className="px-2 py-1 border rounded border-gray-300 opacity-80 text-gray-600 transition-all"
-        >
+        <button onClick={handleNoClick} className="no-button">
           No
         </button>
       )}

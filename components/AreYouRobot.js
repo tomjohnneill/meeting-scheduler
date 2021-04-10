@@ -58,10 +58,7 @@ const AreYouRobot = ({ handleClick }) => {
         {showJoke ? (
           <Captcha handleClick={handleClick} />
         ) : (
-          <button
-            onClick={() => setShowJoke(true)}
-            className="px-2 py-1 border rounded border-gray-300 opacity-80 text-gray-600 transition-all"
-          >
+          <button onClick={() => setShowJoke(true)} className="no-button">
             No
           </button>
         )}
