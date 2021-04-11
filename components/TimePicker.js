@@ -4,7 +4,14 @@ import { useEffect, useRef, createRef, useState } from "react";
 
 dayjs.extend(duration);
 
-const TimePicker = ({ onChange, from, placeholder, className, step }) => {
+const TimePicker = ({
+  onChange,
+  from,
+  placeholder,
+  className,
+  step,
+  value,
+}) => {
   const stepCount = (24 * 60) / step;
 
   const times = [];
@@ -22,7 +29,7 @@ const TimePicker = ({ onChange, from, placeholder, className, step }) => {
   const getMatchingTime = () => {
     const now = dayjs();
     for (let i = 0; i < stepCount; i += 1) {
-      if (now < times[i]) {
+      if (now <= times[i]) {
         return i;
       }
     }
@@ -59,7 +66,17 @@ const TimePicker = ({ onChange, from, placeholder, className, step }) => {
     }
   }, [selected]);
 
-  const [typed, setTyped] = useState("");
+  const [typed, setTyped] = useState(
+    (value && dayjs(value).format("HH:mm")) || ""
+  );
+
+  useEffect(() => {
+    if (value) {
+      console.log(value.toDate());
+      setTyped(dayjs(value).format("HH:mm"));
+    }
+  }, [value]);
+
   useEffect(() => {
     if (typed && matchTimeString(typed)) {
       setSelected(matchTimeString(typed));

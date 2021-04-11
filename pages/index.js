@@ -16,6 +16,7 @@ import Roulette from "../components/Roulette";
 import Accept from "../components/Accept";
 import Dark from "../components/dark";
 import { FaRegCalendarAlt } from "react-icons/fa";
+import Header from "../components/Header";
 
 export default function Home() {
   const [game, setGame] = useState(1);
@@ -118,10 +119,7 @@ export default function Home() {
           <Dark handleClick={advanceGame} text={renderText()} />
         ) : (
           <div className="min-h-screen w-full bg-gray-50 flex flex-col items-center">
-            <div className="flex items-center text-white py-4 border-b border-gray-300 w-full justify-center bg-gray-800 shadow-lg">
-              <FaRegCalendarAlt className="h-16 text-4xl mr-4" />
-              <h1 className="text-4xl font-bold">I'm booking you.</h1>
-            </div>
+            <Header />
             <div className="mt-16 max-w-2xl shadow-lg border border-gray-100 rounded-lg bg-white w-full m-auto p-4 flex flex-col items-center pb-8">
               {accept ? (
                 <Accept text={acceptText()} />
