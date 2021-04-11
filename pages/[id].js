@@ -5,8 +5,10 @@ import { createClient } from "@supabase/supabase-js";
 
 // Create a single supabase client for interacting with your database
 
-const CustomPage = ({ invitation }) => {
+const CustomPage = ({ invitation, error }) => {
   console.log({ invitation });
+
+  console.log({ error });
 
   return (
     <div>
@@ -58,7 +60,11 @@ export async function getServerSideProps(context) {
     )
     .eq("id", id);
 
-  if (error) console.log("error", error);
+  if (error) {
+    return {
+      props: { error },
+    };
+  }
 
   return {
     props: { invitation: data?.[0] || {} }, // will be passed to the page component as props
