@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Header from "../components/Header";
 import { FaCross, FaTrash, FaWindowClose } from "react-icons/fa";
 import EventTime from "../components/EventTime";
-import Router from "next/dist/next-server/lib/router/router";
+import Router from "next/router";
 
 function MyApp() {
   const [options, setOptions] = useState([{ id: Math.random() }]);
@@ -23,36 +23,40 @@ function MyApp() {
   console.log({ options });
 
   const [defaultLength, setDefaultLength] = useState(60);
+  const [loading, setLoading] = useState(false);
 
   const [name, setName] = useState("");
 
   const handleSave = async (e) => {
-    setLoading(true);
     e.preventDefault();
-    const data = {
-      name,
-      options,
-    };
-    console.log({ data });
-    const result = await fetch("/api/create", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => response.json())
-      .catch((err) => {
+
+    if (!loading) {
+      setLoading(true);
+      const data = {
+        name,
+        options,
+      };
+      console.log({ data });
+      const result = await fetch("/api/create", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((response) => response.json())
+        .catch((err) => {
+          alert(err.message);
+          setLoading(false);
+        });
+
+      if (result?.[0]?.id) {
+        Router.push(`/${result?.[0]?.id}`);
+      } else {
         alert(err.message);
         setLoading(false);
-      });
-
-    if (result?.[0]?.id) {
-      Router.push(`/${result?.[0]?.id}`);
-    } else {
-      alert(err.message);
-      setLoading(false);
+      }
     }
   };
 
