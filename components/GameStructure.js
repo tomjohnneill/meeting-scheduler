@@ -60,8 +60,8 @@ export default function GameStructure({ invitation }) {
       game: <Roulette handleClick={advanceGame} />,
     },
     {
-      mobile: false,
-      name: 'ButtonOverload',
+      mobile: true,
+      name: "ButtonOverload",
       game: <ButtonOverload handleClick={advanceGame} />,
     },
     {
@@ -160,16 +160,17 @@ export default function GameStructure({ invitation }) {
   const { options } = invitation || { options: [] };
 
   const dummyTimes = [
-    'next Tuesday at 4?',
-    'Wednesday at 3?',
-    'Thursday at 11?',
-    'Friday at 9:30?',
-    'Monday at 12:30',
-    'Tuesday at 2',
-    'Wednesday at 11am?',
-    'Wednesday at 4?',
-    'Thursday at 11:30',
-    'Friday at 4?',
+    "next Tuesday at 4?",
+    "Wednesday at 3?",
+    "Thursday at 11?",
+    "Thursday at 3?",
+    "Friday at 9:30?",
+    "Monday at 12:30",
+    "Tuesday at 2",
+    "Wednesday at 11am?",
+    "Wednesday at 4?",
+    "Thursday at 11:30",
+    "Friday at 4?",
   ];
 
   const preludes = (timeString, index) => {
