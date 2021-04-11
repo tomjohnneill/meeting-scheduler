@@ -29,7 +29,14 @@ const ButtonDodge = ({ handleClick }) => {
   return (
     <div className="grid grid-cols-2 gap-4">
       <button
-        onClick={() => handleClick("No")}
+        onClick={(e) => {
+          if (dodges < 4) {
+            e.preventDefault();
+            setDodges(dodges + 1);
+          } else {
+            handleClick("No");
+          }
+        }}
         onMouseEnter={() => setDodges(dodges + 1)}
         className="no-button"
         style={{

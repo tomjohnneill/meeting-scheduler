@@ -1,9 +1,15 @@
 import Head from "next/head";
-import { useState } from "react";
-import styles from "../styles/Home.module.css";
 import GameStructure from "../components/GameStructure";
+import styles from "../styles/Home.module.css";
+import { createClient } from "@supabase/supabase-js";
 
-export default function Home() {
+// Create a single supabase client for interacting with your database
+
+const CustomPage = ({ invitation, error }) => {
+  console.log({ invitation });
+
+  console.log({ error });
+
   return (
     <div>
       <Head>
@@ -12,9 +18,8 @@ export default function Home() {
       </Head>
 
       <main className="flex flex-col items-center min-h-screen">
-        <GameStructure />
+        <GameStructure invitation={invitation} />
       </main>
-
       <footer className={styles.footer}>
         <a
           href="https://notfunatparties.substack.com?utm_source=meeting-scheduler&utm_medium=software&utm_campaign=meeting-scheduler"
@@ -31,4 +36,39 @@ export default function Home() {
       </footer>
     </div>
   );
+};
+
+export async function getServerSideProps(context) {
+  const { params } = context;
+  const { id } = params;
+
+  const supabase = createClient(
+    process.env.SUPABASE_API,
+    process.env.SUPABASE_SERVICE_KEY
+  );
+
+  const { data, error } = await supabase
+    .from("invitations")
+    .select(
+      `
+        id,
+        name,
+        title,
+        email,
+        options
+      `
+    )
+    .eq("id", id);
+
+  if (error) {
+    return {
+      props: { error },
+    };
+  }
+
+  return {
+    props: { invitation: data?.[0] || {} }, // will be passed to the page component as props
+  };
 }
+
+export default CustomPage;

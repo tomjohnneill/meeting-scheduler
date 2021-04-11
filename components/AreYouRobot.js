@@ -56,7 +56,7 @@ const AreYouRobot = ({ handleClick }) => {
   const [showJoke, setShowJoke] = useState(false);
 
   return (
-    <div className="relative px-16">
+    <div className="relative px-4 md:px-16">
       <div className="flex">
         {showJoke ? (
           <Captcha handleClick={handleClick} />
