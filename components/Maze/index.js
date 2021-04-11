@@ -29,44 +29,44 @@ const Maze = ({ handleClick }) => {
           <Square left size={SIZE} onLose={handleLose} />
           <Square bottom size={SIZE} onLose={handleLose} />
           <Square top right size={SIZE} onLose={handleLose} />
-          <Square left bottom size={SIZE} onLose={handleLose} />
-          <Square top bottom size={SIZE} onLose={handleLose} />
-          <Square top bottom size={SIZE} onLose={handleLose} />
           <Square size={SIZE} onLose={handleLose} />
-          <Square top left size={SIZE} onLose={handleLose} />
-          <Square right size={SIZE} onLose={handleLose} />
+          <Square size={SIZE} onLose={handleLose} />
+          <Square size={SIZE} onLose={handleLose} />
+          <Square size={SIZE} onLose={handleLose} />
+          <Square left size={SIZE} onLose={handleLose} />
+          <Square size={SIZE} onLose={handleLose} />
           <Square right left size={SIZE} onLose={handleLose} />
         </div>
         <div className="flex 3rd">
-          <Square right left size={SIZE} onLose={handleLose} />
+          <Square left size={SIZE} onLose={handleLose} />
           <Square left size={SIZE} onLose={handleLose} />
           <Square right bottom size={SIZE} onLose={handleLose} />
-          <Square top right left size={SIZE} onLose={handleLose} />
+          <Square top size={SIZE} onLose={handleLose} />
           <Square top left size={SIZE} onLose={handleLose} />
-          <Square top right size={SIZE} onLose={handleLose} />
-          <Square right left size={SIZE} onLose={handleLose} />
-          <Square right left size={SIZE} onLose={handleLose} />
-          <Square right left size={SIZE} onLose={handleLose} />
+          <Square top size={SIZE} onLose={handleLose} />
+          <Square left size={SIZE} onLose={handleLose} />
+          <Square left size={SIZE} onLose={handleLose} />
+          <Square left size={SIZE} onLose={handleLose} />
           <Square right left size={SIZE} onLose={handleLose} />
         </div>
         <div className="flex 4th">
+          <Square left size={SIZE} onLose={handleLose} />
           <Square right left size={SIZE} onLose={handleLose} />
-          <Square right left size={SIZE} onLose={handleLose} />
-          <Square top left size={SIZE} onLose={handleLose} />
+          <Square size={SIZE} onLose={handleLose} />
           <Square bottom size={SIZE} onLose={handleLose} />
           <Square right bottom size={SIZE} onLose={handleLose} />
-          <Square left bottom size={SIZE} onLose={handleLose} />
-          <Square right size={SIZE} onLose={handleLose} />
-          <Square right left size={SIZE} onLose={handleLose} />
+          <Square bottom size={SIZE} onLose={handleLose} />
+          <Square size={SIZE} onLose={handleLose} />
+          <Square left size={SIZE} onLose={handleLose} />
           <Square left size={SIZE} onLose={handleLose} />
           <Square right left size={SIZE} onLose={handleLose} />
         </div>
         <div className="flex 5th">
+          <Square left size={SIZE} onLose={handleLose} />
           <Square right left size={SIZE} onLose={handleLose} />
-          <Square right left size={SIZE} onLose={handleLose} />
-          <Square left bottom size={SIZE} onLose={handleLose} />
-          <Square bottom size={SIZE} onLose={handleLose} />
-          <button
+          <Square size={SIZE} onLose={handleLose} />
+          <Square size={SIZE} onLose={handleLose} />
+          <div
             onClick={() => {
               if (!gameOver) {
                 handleClick("No");
@@ -76,19 +76,19 @@ const Maze = ({ handleClick }) => {
             className={`${
               gameOver
                 ? "text-red-600 font-bold opacity-90 text-sm leading-none"
-                : "opacity-80 text-gray-600"
-            } transition-all`}
+                : "opacity-80 text-gray-600 hover:bg-gray-50 cursor-pointer"
+            } transition-all text-center`}
           >
             {gameOver ? "TRY AGAIN" : "No"}
-          </button>
-          <Square top right left size={SIZE} onLose={handleLose} />
-          <Square right left size={SIZE} onLose={handleLose} />
+          </div>
+          <Square top left size={SIZE} onLose={handleLose} />
+          <Square left size={SIZE} onLose={handleLose} />
           <Square left size={SIZE} onLose={handleLose} />
           <Square right left size={SIZE} onLose={handleLose} />
         </div>
 
         <div className="flex 6th">
-          <Square right left size={SIZE} onLose={handleLose} />
+          <Square left size={SIZE} onLose={handleLose} />
           <Square left bottom size={SIZE} onLose={handleLose} />
           <Square top bottom size={SIZE} onLose={handleLose} />
           <Square top bottom size={SIZE} onLose={handleLose} />
@@ -116,8 +116,8 @@ const Maze = ({ handleClick }) => {
           <Square bottom size={SIZE} onLose={handleLose} />
           <Square bottom size={SIZE} onLose={handleLose} />
           <Square right bottom size={SIZE} onLose={handleLose} />
-          <Square top left size={SIZE} onLose={handleLose} />
-          <Square top right size={SIZE} onLose={handleLose} />
+          <Square size={SIZE} onLose={handleLose} />
+          <Square size={SIZE} onLose={handleLose} />
           <Square left bottom size={SIZE} onLose={handleLose} />
           <Square top bottom size={SIZE} onLose={handleLose} />
           <Square bottom size={SIZE} onLose={handleLose} />
@@ -136,8 +136,10 @@ const Maze = ({ handleClick }) => {
           <Square right bottom size={SIZE} onLose={handleLose} />
         </div>
       </div>
-      <div className="block">
-        <button className="btn-blue">Yes</button>
+      <div className="block ml-4">
+        <button className="yes-button" onClick={() => handleClick("Yes")}>
+          Yes
+        </button>
       </div>
     </div>
   );

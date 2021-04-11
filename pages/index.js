@@ -1,26 +1,32 @@
-import Head from 'next/head';
-import { useState } from 'react';
-import styles from '../styles/Home.module.css';
-import ButtonDodge from '../components/ButtonDodge';
-import HiddenCursor from '../components/HiddenCursor';
-import PrewrittenTweet from '../components/PrewrittenTweet';
-import ButtonOverload from '../components/ButtonOverload';
-import Maze from '../components/Maze';
-import Switcheroo from '../components/Switcheroo';
-import GrowingShrinking from '../components/GrowingShrinking';
-import StIves from '../components/StIves';
-import AreYouRobot from '../components/AreYouRobot';
-import MontyHall from '../components/MontyHall';
-import PowerBar from '../components/PowerBar';
-import Roulette from '../components/Roulette';
+import Head from "next/head";
+import { useState } from "react";
+import styles from "../styles/Home.module.css";
+import ButtonDodge from "../components/ButtonDodge";
+import HiddenCursor from "../components/HiddenCursor";
+import PrewrittenTweet from "../components/PrewrittenTweet";
+import ButtonOverload from "../components/ButtonOverload";
+import Maze from "../components/Maze";
+import Switcheroo from "../components/Switcheroo";
+import GrowingShrinking from "../components/GrowingShrinking";
+import StIves from "../components/StIves";
+import AreYouRobot from "../components/AreYouRobot";
+import MontyHall from "../components/MontyHall";
+import PowerBar from "../components/PowerBar";
+import Roulette from "../components/Roulette";
+import Accept from "../components/Accept";
+import Dark from "../components/dark";
 import PopupAds from '../components/PopupAds';
+import { FaRegCalendarAlt } from "react-icons/fa";
 
 export default function Home() {
-  const [game, setGame] = useState(6);
+  const [game, setGame] = useState(1);
+  const [accept, setAccept] = useState(false);
 
   const advanceGame = response => {
     if (response === 'No') {
       setGame(game + 1);
+    } else {
+      setAccept(true);
     }
   };
 
@@ -30,29 +36,36 @@ export default function Home() {
   const renderGame = () => {
     switch (game) {
       case 1:
-        return <Roulette handleClick={advanceGame} />;
-      case 2:
         return <ButtonDodge handleClick={advanceGame} />;
-      case 3:
+      case 2:
         return <GrowingShrinking handleClick={advanceGame} />;
+      case 3:
+        return <AreYouRobot handleClick={advanceGame} />;
       case 4:
         return <HiddenCursor handleClick={advanceGame} />;
       case 5:
         return <ButtonOverload handleClick={advanceGame} />;
       case 6:
-        return <PopupAds handleClick={advanceGame} />;
+        return <PopupAds handleClick={advanceGame}/>;
       case 7:
-        return <Switcheroo handleClick={advanceGame} />;
-      case 8:
         return <PrewrittenTweet handleClick={advanceGame} />;
-      case 9:
+      case 8:
         return <Maze handleClick={advanceGame} />;
-      case 10:
+      case 9:
         return <PowerBar handleClick={advanceGame} />;
-      case 11:
+      case 10:
         return <StIves handleClick={advanceGame} />;
       default:
-        return <AreYouRobot />;
+        return (
+          <iframe
+            src="https://notfunatparties.substack.com/embed"
+            width="480"
+            height="320"
+            style={{ border: "1px solid #EEE", background: "white" }}
+            frameBorder="0"
+            scrolling="no"
+          ></iframe>
+        );
     }
   };
 
@@ -71,41 +84,74 @@ export default function Home() {
       case 6:
         return 'What about Tuesday at 2? Or do you have someone more important to meet?';
       case 7:
-        return "Surely at this point it's just easier to say yes? Wednesday at 4?";
+        return "You can't really be that busy. Maybe Wednesday at 11am?";
       case 8:
-        return "Come on now, don't be a dick, let's do Thursday at 11:30?";
+        return "Surely at this point it's just easier to say yes? Wednesday at 4?";
       case 9:
-        return 'This is just pissing me off. Friday at 4?';
+        return "Come on now, don't be a dick, let's do Thursday at 11:30?";
+      case 10:
+        return "This is pissing me off now. Friday at 4?";
+
       default:
-        return "OK fine. I'll send an email instead";
+        return "OK fine. Maybe this could have been an email.";
+    }
+  };
+
+  const acceptText = () => {
+    if (game === 1) {
+      return "Huh, that was easier than expected.";
+    } else if (game < 5) {
+      return "That wasn't too hard was it.";
+    } else {
+      return "Playing hard to get I see. Glad we got there in the end.";
     }
   };
 
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
-        <title>Create Next App</title>
+        <title>I'm Booking You</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <img
-          src="https://img.favpng.com/0/9/22/calendar-date-dating-clip-art-png-favpng-ihHy3CafNW2MSiY3hBAPsZ9a3.jpg"
-          className="h-48"
-        />
-        <h1 className="text-2xl my-4">{renderText()}</h1>
+      <main className="flex flex-col items-center min-h-screen">
+        {game === 6 && !accept ? (
+          <Dark handleClick={advanceGame} text={renderText()} />
+        ) : (
+          <div className="min-h-screen w-full bg-gray-50 flex flex-col items-center">
+            <div className="flex items-center text-white py-4 border-b border-gray-300 w-full justify-center bg-gray-800 shadow-lg">
+              <FaRegCalendarAlt className="h-16 text-4xl mr-4" />
+              <h1 className="text-4xl font-bold">I'm booking you.</h1>
+            </div>
+            <div className="mt-16 max-w-2xl shadow-lg border border-gray-100 rounded-lg bg-white w-full m-auto p-4 flex flex-col items-center pb-8">
+              {accept ? (
+                <Accept text={acceptText()} />
+              ) : (
+                <>
+                  <h1 className="text-2xl font-medium my-6 text-center">
+                    {renderText()}
+                  </h1>
 
-        {renderGame()}
+                  {renderGame()}
+                </>
+              )}
+            </div>
+          </div>
+        )}
       </main>
 
       <footer className={styles.footer}>
         <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          href="https://notfunatparties.substack.com?utm_source=meeting-scheduler&utm_medium=software&utm_campaign=meeting-scheduler"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
+          <img
+            src="https://cdn.substack.com/image/fetch/w_96,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F73dcc820-91b0-4c39-9a88-a99e897b155b_120x120.png"
+            alt="Vercel Logo"
+            className={styles.logo}
+          />
+          <span className="ml-2">Made by Not Fun at Parties</span>
         </a>
       </footer>
     </div>
