@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Header from "../components/Header";
 import { FaCross, FaTrash, FaWindowClose } from "react-icons/fa";
 import EventTime from "../components/EventTime";
+import Router from "next/dist/next-server/lib/router/router";
 
 function MyApp() {
   const [options, setOptions] = useState([{ id: Math.random() }]);
@@ -25,20 +26,44 @@ function MyApp() {
 
   const [name, setName] = useState("");
 
-  const handleSave = () => {
-    // Save to DB
+  const handleSave = async (e) => {
+    setLoading(true);
+    e.preventDefault();
     const data = {
       name,
       options,
     };
     console.log({ data });
+    const result = await fetch("/api/create", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .catch((err) => {
+        alert(err.message);
+        setLoading(false);
+      });
+
+    if (result?.[0]?.id) {
+      Router.push(`/${result?.[0]?.id}`);
+    } else {
+      alert(err.message);
+      setLoading(false);
+    }
   };
 
   return (
     <>
       <Header />
       <div className="min-h-screen bg-gray-50 w-full p-8 pb-32">
-        <form className="mx-auto max-w-xl w-full bg-white border border-gray-100 shadow-lg rounded-lg">
+        <form
+          className="mx-auto max-w-xl w-full bg-white border border-gray-100 shadow-lg rounded-lg"
+          onSubmit={handleSave}
+        >
           <div className="pb-4 mb-4 border-b border-gray-200">
             <h1 className="font-bold text-3xl py-4 px-4 bg-red-600 opacity-80 border-b text-white rounded-t-lg">
               Create your own

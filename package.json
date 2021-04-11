@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^1.9.0",
     "autoprefixer": "^10.2.5",
     "calendar-link": "^2.0.16",
     "dayjs": "^1.10.4",
