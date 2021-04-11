@@ -170,12 +170,13 @@ export default function GameStructure({ invitation }) {
     const list = [
       `That's annoying, how about ${timeString}`,
       `Really? It would be good to get something in the diary soon. How about ${timeString}`,
+      `I know you're really busy, but it would be very helpful. I could do ${timeString}`,
       `You're being a bit difficult now. How about ${timeString}`,
       `Now you're just taking the piss. What about ${timeString}`,
       `What about ${timeString}? Or do you have someone more important to meet?`,
       `You can't really be that busy. Maybe ${timeString}`,
       `Surely at this point it's just easier to say yes? ${timeString}`,
-      `Come on now, don't be a dick, let's do ${timeString}`,
+      `Come on, don't be a dick, let's do ${timeString}`,
       `This is pissing me off now. ${timeString}`,
     ];
     return list[index];
