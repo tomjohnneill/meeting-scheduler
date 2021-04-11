@@ -191,6 +191,25 @@ export default function GameStructure({ invitation }) {
     }
   };
 
+  const defaultEvent = {
+    title: "My birthday party",
+    description: "Be there!",
+    start: "2021-12-25 18:00:00 +0100",
+    duration: [3, "hour"],
+  };
+
+  const generateEvent = (option) => {
+    return {
+      title: invitation.title || "Event",
+      description: "",
+      start: option.start,
+      guests: invitation.email ? [invitation.email] : [],
+      duration: [dayjs(option.end).diff(dayjs(option.start), "hours"), "hour"],
+    };
+  };
+
+  console.log({ invitation });
+
   return (
     <>
       {dark && !accept ? (
@@ -201,7 +220,14 @@ export default function GameStructure({ invitation }) {
           <div className="min-h-screen w-full bg-gray-50 flex flex-col items-center px-4">
             <div className="mt-16 max-w-2xl shadow-lg border border-gray-100 rounded-lg bg-white w-full m-auto p-4 flex flex-col items-center pb-8">
               {accept ? (
-                <Accept text={acceptText()} />
+                <Accept
+                  text={acceptText()}
+                  event={
+                    invitation?.options?.[game - 1]
+                      ? generateEvent(invitation?.options?.[game - 1])
+                      : defaultEvent
+                  }
+                />
               ) : (
                 <>
                   <h1 className="text-2xl font-medium my-6 text-center">

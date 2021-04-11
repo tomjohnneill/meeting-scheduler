@@ -10,7 +10,7 @@ const supabase = createClient(
 export default async (req, res) => {
   const { data, error } = await supabase
     .from("invitations")
-    .insert([{ name: req.body.name, options: req.body.options }]);
+    .insert([{ ...req.body }]);
 
   if (!error) {
     res.status(200).json(data);

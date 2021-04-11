@@ -26,6 +26,8 @@ function MyApp() {
   const [loading, setLoading] = useState(false);
 
   const [name, setName] = useState("");
+  const [title, setTitle] = useState("");
+  const [email, setEmail] = useState("");
 
   const handleSave = async (e) => {
     e.preventDefault();
@@ -34,6 +36,8 @@ function MyApp() {
       setLoading(true);
       const data = {
         name,
+        title,
+        email,
         options,
       };
       console.log({ data });
@@ -50,11 +54,14 @@ function MyApp() {
           alert(err.message);
           setLoading(false);
         });
-
+      console.log({ result });
       if (result?.[0]?.id) {
         Router.push(`/${result?.[0]?.id}`);
       } else {
-        alert(err.message);
+        if (result.message) {
+          alert(result.message);
+        }
+
         setLoading(false);
       }
     }
@@ -69,18 +76,46 @@ function MyApp() {
           onSubmit={handleSave}
         >
           <div className="pb-4 mb-4 border-b border-gray-200">
-            <h1 className="font-bold text-3xl py-4 px-4 bg-red-600 opacity-80 border-b text-white rounded-t-lg">
+            <h1 className="font-bold text-3xl py-4 px-4 bg-blue-700 opacity-80 border-b text-white rounded-t-lg">
               Create your own
             </h1>
+            <h2 className="font-bold text-xl px-4 py-4">
+              Event details
+              <span className="font-light"> (for the calendar invite)</span>
+            </h2>
+            <div className="grid grid-cols-2">
+              <div className="px-4">
+                <label for="name" className="w-full mt-4 ">
+                  Who are you sending this to?
+                </label>
+                <input
+                  onChange={(e) => setName(e.target.value)}
+                  className="flex mt-2 w-full justify-center ounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
+                  placeholder="Name"
+                  name="name"
+                />
+              </div>
+              <div className="px-4">
+                <label for="title" className="w-full">
+                  What's the event called?
+                </label>
+                <input
+                  onChange={(e) => setTitle(e.target.value)}
+                  className="flex mt-2 w-full justify-center ounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
+                  placeholder="Event Title"
+                  name="title"
+                />
+              </div>
+            </div>
             <div className="px-4 mt-4">
-              <label for="name" className="w-full mt-4 font-bold text-xl">
-                Who are you sending this to?
+              <label for="title" className="w-full mt-4">
+                What's your email address?{" "}
               </label>
               <input
-                onChange={(e) => setName(e.target.value)}
-                className="flex mt-2 w-48 justify-center ounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
-                placeholder="Name"
-                name="name"
+                onChange={(e) => setEmail(e.target.value)}
+                className="flex mt-2 w-full justify-center ounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
+                placeholder="Your Email Address"
+                name="email"
               />
             </div>
           </div>
@@ -132,7 +167,7 @@ function MyApp() {
           <div className="w-full flex justify-center items-center p-4 border-t border-gray-200">
             <input
               type="submit"
-              className="yes-button w-full text-center cursor-pointer"
+              className="other-button w-full text-center cursor-pointer opacity-80"
               value="Save"
             />
           </div>

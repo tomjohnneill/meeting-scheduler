@@ -36,15 +36,7 @@ const CustomPage = ({ invitation }) => {
   );
 };
 
-export async function getStaticPaths() {
-  return {
-    paths: [],
-
-    fallback: true, // See the "fallback" section below
-  };
-}
-
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const { params } = context;
   const { id } = params;
 
@@ -59,6 +51,8 @@ export async function getStaticProps(context) {
       `
         id,
         name,
+        title,
+        email,
         options
       `
     )
@@ -67,7 +61,6 @@ export async function getStaticProps(context) {
   if (error) console.log("error", error);
 
   return {
-    revalidate: 120,
     props: { invitation: data?.[0] || {} }, // will be passed to the page component as props
   };
 }
