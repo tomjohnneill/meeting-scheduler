@@ -46,7 +46,7 @@ const Accept = ({ text }) => {
       <h2 className="w-full text-center text-xl font-bold my-4">
         Add to your calendar
       </h2>
-      <div className="grid grid-cols-5 space-evenly gap-2">
+      <div className="grid  grid-cols-3 md:grid-cols-5 space-evenly gap-2">
         {links.map((item) => (
           <a
             href={item.link}

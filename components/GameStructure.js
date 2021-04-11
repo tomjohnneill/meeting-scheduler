@@ -196,22 +196,24 @@ export default function GameStructure({ invitation }) {
       {dark && !accept ? (
         <Dark handleClick={advanceGame} text={renderText()} />
       ) : (
-        <div className="min-h-screen w-full bg-gray-50 flex flex-col items-center">
+        <>
           <Header />
-          <div className="mt-16 max-w-2xl shadow-lg border border-gray-100 rounded-lg bg-white w-full m-auto p-4 flex flex-col items-center pb-8">
-            {accept ? (
-              <Accept text={acceptText()} />
-            ) : (
-              <>
-                <h1 className="text-2xl font-medium my-6 text-center">
-                  {renderText()}
-                </h1>
+          <div className="min-h-screen w-full bg-gray-50 flex flex-col items-center px-4">
+            <div className="mt-16 max-w-2xl shadow-lg border border-gray-100 rounded-lg bg-white w-full m-auto p-4 flex flex-col items-center pb-8">
+              {accept ? (
+                <Accept text={acceptText()} />
+              ) : (
+                <>
+                  <h1 className="text-2xl font-medium my-6 text-center">
+                    {renderText()}
+                  </h1>
 
-                {renderGame()}
-              </>
-            )}
+                  {renderGame()}
+                </>
+              )}
+            </div>
           </div>
-        </div>
+        </>
       )}
     </>
   );
