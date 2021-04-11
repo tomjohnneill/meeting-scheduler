@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 import ButtonDodge from "../components/ButtonDodge";
 import HiddenCursor from "../components/HiddenCursor";
@@ -32,45 +32,101 @@ export default function GameStructure({ invitation }) {
   // To do: replace St Ives with Dark
   // Add ads
 
+  const games = [
+    {
+      mobile: true,
+      name: "ButtonDodge",
+      game: <ButtonDodge handleClick={advanceGame} />,
+    },
+    {
+      mobile: false,
+      name: "GrowingShrinking",
+      game: <GrowingShrinking handleClick={advanceGame} />,
+    },
+    {
+      mobile: true,
+      name: "AreYouRobot",
+      game: <AreYouRobot handleClick={advanceGame} />,
+    },
+    {
+      mobile: false,
+      name: "HiddenCursor",
+      game: <HiddenCursor handleClick={advanceGame} />,
+    },
+    {
+      mobile: false,
+      name: "ButtonOverload",
+      game: <ButtonOverload handleClick={advanceGame} />,
+    },
+    {
+      mobile: true,
+      name: "Dark",
+      game: null,
+    },
+    {
+      mobile: true,
+      name: "PrewrittenTweet",
+      game: <PrewrittenTweet handleClick={advanceGame} />,
+    },
+    {
+      mobile: false,
+      name: "Maze",
+      game: <Maze handleClick={advanceGame} />,
+    },
+    {
+      mobile: true,
+      name: "PowerBar",
+      game: <PowerBar handleClick={advanceGame} />,
+    },
+    {
+      mobile: true,
+      name: "StIves",
+      game: <StIves handleClick={advanceGame} />,
+    },
+  ];
+
+  const [gameList, setGameList] = useState([]);
+
+  const defaultGame = (
+    <iframe
+      src="https://notfunatparties.substack.com/embed"
+      width="480"
+      height="320"
+      style={{ border: "1px solid #EEE", background: "white" }}
+      frameBorder="0"
+      scrolling="no"
+    ></iframe>
+  );
+
   const renderGame = () => {
-    const defaultGame = (
-      <iframe
-        src="https://notfunatparties.substack.com/embed"
-        width="480"
-        height="320"
-        style={{ border: "1px solid #EEE", background: "white" }}
-        frameBorder="0"
-        scrolling="no"
-      ></iframe>
-    );
     if (invitation?.options.length < game) {
       return defaultGame;
-    }
-    switch (game) {
-      case 1:
-        return <ButtonDodge handleClick={advanceGame} />;
-      case 2:
-        return <GrowingShrinking handleClick={advanceGame} />;
-      case 3:
-        return <AreYouRobot handleClick={advanceGame} />;
-      case 4:
-        return <HiddenCursor handleClick={advanceGame} />;
-      case 5:
-        return <ButtonOverload handleClick={advanceGame} />;
-      case 6:
-        return null;
-      case 7:
-        return <PrewrittenTweet handleClick={advanceGame} />;
-      case 8:
-        return <Maze handleClick={advanceGame} />;
-      case 9:
-        return <PowerBar handleClick={advanceGame} />;
-      case 10:
-        return <StIves handleClick={advanceGame} />;
-      default:
-        return defaultGame;
+    } else if (game === 1) {
+      return games[0].game;
+    } else {
+      let applicableGames = gameList;
+
+      return applicableGames[game - 1]
+        ? applicableGames[game - 1].game
+        : defaultGame;
     }
   };
+
+  const [dark, setDark] = useState(false);
+  useEffect(() => {
+    if (game > 1) {
+      let applicableGames = games;
+      if (window.innerWidth < 736) {
+        applicableGames = games.filter((item) => item.mobile);
+      }
+      setGameList(applicableGames);
+      if (applicableGames[game - 1]?.name === "Dark") {
+        setDark(true);
+      } else {
+        setDark(false);
+      }
+    }
+  }, [game]);
 
   const humanize = (date) => {
     return `${dayjs(date).format("dddd")} at ${dayjs(date).format("h")}?`;
@@ -107,7 +163,10 @@ export default function GameStructure({ invitation }) {
   };
 
   const renderText = () => {
-    if (invitation?.options.length < game) {
+    if (
+      invitation?.options.length < game ||
+      (gameList.length > 1 && gameList.length < game)
+    ) {
       return "OK fine. Maybe this could have been an email.";
     } else if (game === 1) {
       return `Hi ${invitation?.name || "Karen"}, can you meet ${
@@ -134,7 +193,7 @@ export default function GameStructure({ invitation }) {
 
   return (
     <>
-      {game === 6 && !accept ? (
+      {dark && !accept ? (
         <Dark handleClick={advanceGame} text={renderText()} />
       ) : (
         <div className="min-h-screen w-full bg-gray-50 flex flex-col items-center">

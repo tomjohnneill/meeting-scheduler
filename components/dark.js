@@ -42,8 +42,8 @@ export default function Dark({ handleClick, text }) {
           ref={lookingGlassRef}
           className="looking-glass absolute rounded-full w-32 h-32 bg-white bottom-24 right-36 pointer-events-none"
           style={{
-            top: `calc(${mousePosition.y}px - 4rem)`,
-            left: `calc(${mousePosition.x}px - 4rem)`,
+            top: `calc(${mousePosition.y || 250}px - 4rem)`,
+            left: `calc(${mousePosition.x || 250}px - 4rem)`,
           }}
         ></div>
       </div>
