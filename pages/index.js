@@ -16,7 +16,7 @@ import Roulette from '../components/Roulette';
 import PopupAds from '../components/PopupAds';
 
 export default function Home() {
-  const [game, setGame] = useState(7);
+  const [game, setGame] = useState(6);
 
   const advanceGame = response => {
     if (response === 'No') {
@@ -32,20 +32,24 @@ export default function Home() {
       case 1:
         return <Roulette handleClick={advanceGame} />;
       case 2:
-        return <GrowingShrinking handleClick={advanceGame} />;
+        return <ButtonDodge handleClick={advanceGame} />;
       case 3:
-        return <HiddenCursor handleClick={advanceGame} />;
+        return <GrowingShrinking handleClick={advanceGame} />;
       case 4:
-        return <ButtonOverload handleClick={advanceGame} />;
+        return <HiddenCursor handleClick={advanceGame} />;
       case 5:
-        return <PrewrittenTweet handleClick={advanceGame} />;
+        return <ButtonOverload handleClick={advanceGame} />;
       case 6:
         return <PopupAds handleClick={advanceGame} />;
       case 7:
-        return <Maze handleClick={advanceGame} />;
+        return <Switcheroo handleClick={advanceGame} />;
       case 8:
-        return <PowerBar handleClick={advanceGame} />;
+        return <PrewrittenTweet handleClick={advanceGame} />;
       case 9:
+        return <Maze handleClick={advanceGame} />;
+      case 10:
+        return <PowerBar handleClick={advanceGame} />;
+      case 11:
         return <StIves handleClick={advanceGame} />;
       default:
         return <AreYouRobot />;
