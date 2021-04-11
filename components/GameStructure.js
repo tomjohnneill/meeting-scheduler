@@ -59,7 +59,7 @@ export default function GameStructure({ invitation }) {
       game: <Roulette handleClick={advanceGame} />,
     },
     {
-      mobile: false,
+      mobile: true,
       name: "ButtonOverload",
       game: <ButtonOverload handleClick={advanceGame} />,
     },
@@ -157,6 +157,7 @@ export default function GameStructure({ invitation }) {
     "next Tuesday at 4?",
     "Wednesday at 3?",
     "Thursday at 11?",
+    "Thursday at 3?",
     "Friday at 9:30?",
     "Monday at 12:30",
     "Tuesday at 2",
