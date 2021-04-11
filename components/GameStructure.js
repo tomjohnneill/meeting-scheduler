@@ -54,6 +54,11 @@ export default function GameStructure({ invitation }) {
       game: <HiddenCursor handleClick={advanceGame} />,
     },
     {
+      mobile: true,
+      name: "Roulette",
+      game: <Roulette handleClick={advanceGame} />,
+    },
+    {
       mobile: false,
       name: "ButtonOverload",
       game: <ButtonOverload handleClick={advanceGame} />,
@@ -88,14 +93,28 @@ export default function GameStructure({ invitation }) {
   const [gameList, setGameList] = useState([]);
 
   const defaultGame = (
-    <iframe
-      src="https://notfunatparties.substack.com/embed"
-      width="480"
-      height="320"
-      style={{ border: "1px solid #EEE", background: "white" }}
-      frameBorder="0"
-      scrolling="no"
-    ></iframe>
+    <>
+      <div className="hidden md:block">
+        <iframe
+          src="https://notfunatparties.substack.com/embed"
+          width="480"
+          height="320"
+          style={{ border: "1px solid #EEE", background: "white" }}
+          frameBorder="0"
+          scrolling="no"
+        ></iframe>
+      </div>
+      <div className="block md:hidden">
+        <iframe
+          src="https://notfunatparties.substack.com/embed"
+          width="100%"
+          height="320"
+          style={{ border: "1px solid #EEE", background: "white" }}
+          frameBorder="0"
+          scrolling="no"
+        ></iframe>
+      </div>
+    </>
   );
 
   const renderGame = () => {

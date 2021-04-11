@@ -8,9 +8,11 @@ const Header = () => {
         <FaRegCalendarAlt className="h-12 text-4xl mr-4" />
         <h1 className="text-3xl font-bold">I'm booking you.</h1>
       </div>
-      <Link href="/create">
-        <button className="other-button">Create your own</button>
-      </Link>
+      <div className="hidden md:block">
+        <Link href="/create">
+          <button className="other-button">Create your own</button>
+        </Link>
+      </div>
     </div>
   );
 };
