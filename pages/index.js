@@ -1,25 +1,25 @@
-import Head from "next/head";
-import { useState } from "react";
-import styles from "../styles/Home.module.css";
-import ButtonDodge from "../components/ButtonDodge";
-import HiddenCursor from "../components/HiddenCursor";
-import PrewrittenTweet from "../components/PrewrittenTweet";
-import ButtonOverload from "../components/ButtonOverload";
-import Maze from "../components/Maze";
-import Switcheroo from "../components/Switcheroo";
-import GrowingShrinking from "../components/GrowingShrinking";
-import StIves from "../components/StIves";
-import AreYouRobot from "../components/AreYouRobot";
-import MontyHall from "../components/MontyHall";
-import PowerBar from "../components/PowerBar";
-import Roulette from "../components/Roulette";
-import Accept from "../components/Accept";
-import Dark from "../components/dark";
+import Head from 'next/head';
+import { useState } from 'react';
+import styles from '../styles/Home.module.css';
+import ButtonDodge from '../components/ButtonDodge';
+import HiddenCursor from '../components/HiddenCursor';
+import PrewrittenTweet from '../components/PrewrittenTweet';
+import ButtonOverload from '../components/ButtonOverload';
+import Maze from '../components/Maze';
+import Switcheroo from '../components/Switcheroo';
+import GrowingShrinking from '../components/GrowingShrinking';
+import StIves from '../components/StIves';
+import AreYouRobot from '../components/AreYouRobot';
+import MontyHall from '../components/MontyHall';
+import PowerBar from '../components/PowerBar';
+import Roulette from '../components/Roulette';
+import Accept from '../components/Accept';
+import Dark from '../components/dark';
 import PopupAds from '../components/PopupAds';
-import { FaRegCalendarAlt } from "react-icons/fa";
+import { FaRegCalendarAlt } from 'react-icons/fa';
 
 export default function Home() {
-  const [game, setGame] = useState(1);
+  const [game, setGame] = useState(6);
   const [accept, setAccept] = useState(false);
 
   const advanceGame = response => {
@@ -46,14 +46,16 @@ export default function Home() {
       case 5:
         return <ButtonOverload handleClick={advanceGame} />;
       case 6:
-        return <PopupAds handleClick={advanceGame}/>;
+        return null;
       case 7:
-        return <PrewrittenTweet handleClick={advanceGame} />;
+        return <PopupAds handleClick={advanceGame} />;
       case 8:
-        return <Maze handleClick={advanceGame} />;
+        return <PrewrittenTweet handleClick={advanceGame} />;
       case 9:
-        return <PowerBar handleClick={advanceGame} />;
+        return <Maze handleClick={advanceGame} />;
       case 10:
+        return <PowerBar handleClick={advanceGame} />;
+      case 11:
         return <StIves handleClick={advanceGame} />;
       default:
         return (
@@ -61,7 +63,7 @@ export default function Home() {
             src="https://notfunatparties.substack.com/embed"
             width="480"
             height="320"
-            style={{ border: "1px solid #EEE", background: "white" }}
+            style={{ border: '1px solid #EEE', background: 'white' }}
             frameBorder="0"
             scrolling="no"
           ></iframe>
@@ -90,20 +92,22 @@ export default function Home() {
       case 9:
         return "Come on now, don't be a dick, let's do Thursday at 11:30?";
       case 10:
-        return "This is pissing me off now. Friday at 4?";
+        return 'This is pissing me off now. Friday at 4?';
+      case 11:
+        return "Seriously?! How's Wednesday at 2?";
 
       default:
-        return "OK fine. Maybe this could have been an email.";
+        return 'OK fine. Maybe this could have been an email.';
     }
   };
 
   const acceptText = () => {
     if (game === 1) {
-      return "Huh, that was easier than expected.";
+      return 'Huh, that was easier than expected.';
     } else if (game < 5) {
       return "That wasn't too hard was it.";
     } else {
-      return "Playing hard to get I see. Glad we got there in the end.";
+      return 'Playing hard to get I see. Glad we got there in the end.';
     }
   };
 

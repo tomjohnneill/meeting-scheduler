@@ -14,28 +14,40 @@ const PopupAds = ({ handleClick }) => {
     setPopUp(null);
     setTimeout(() => {
       setPopUp(newPop);
-    }, 200);
+    }, 400);
   };
 
   const ads = [
     {
       title: 'Congratulations!!!!!',
-      titleStyle: "",
+      titleStyle: '',
       image:
         'https://cdn.vox-cdn.com/thumbor/XKrMqqGnvhJqbwt9DvTjGDPcG7M=/1600x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/22341197/doge.gif',
       body: "You're our 5000th visitor! You WIN 5M DogeCoin",
       buttonText: 'CLICK TO CLAIM YOUR PRIZE',
-      bgColor: 'bg-blue-800',
+      buttonColor: 'bg-green-500',
+      bgColor: 'bg-blue-900',
       animation: 'flashy',
-      border: 'border border-blue-800',
+      border: 'border border-blue-900',
     },
     {
       title: "You're a winner!!!",
-      titleStyle: "text-red-500 font-bold",
+      titleStyle: 'text-red-500 font-bold',
+      image:
+        'https://www.teads.com/wp-content/uploads/2014/07/Save-Puppy-YouTube-Ad.png',
+      buttonText: 'CLICK TO CLAIM YOUR PRIZE',
+      buttonColor: 'bg-red-500',
+      bgColor: 'bg-gray-600',
+      border: 'border-4 border-red-500 border-dashed',
+    },
+    {
+      title: "You're a winner!!!",
+      titleStyle: 'text-red-500 font-bold',
       image: '/galaxy/Slice 1.png',
       buttonText: 'CLICK TO CLAIM YOUR PRIZE',
-      bgColor: 'bg-red-500',
-      border: 'border-4 border-red-500 border-dashed',
+      buttonColor: 'bg-yellow-300',
+      bgColor: 'bg-gray-400',
+      border: 'border-2 border-blue-500',
     },
   ];
 
@@ -46,15 +58,13 @@ const PopupAds = ({ handleClick }) => {
           className={`shadow-xl absolute right-0 mr-12 w-64 z-40 flex flex-col justify-center bg-white ${ads[popUp].border}`}
         >
           <div className={`${ads[popUp].bgColor} h-6 flex justify-end`}>
-            <button
-              className="absolute right-0 mr-1 text-white"
-            >
-              x
-            </button>
+            <button className="absolute right-0 mr-1 text-white">x</button>
           </div>
-          <h2 className={`text-2xl m-1 text-center ${ads[popUp].animation} ${ads[popUp].titleStyle}`}>
-              {ads[popUp].title}
-            </h2>
+          <h2
+            className={`text-2xl m-1 text-center ${ads[popUp].animation} ${ads[popUp].titleStyle}`}
+          >
+            {ads[popUp].title}
+          </h2>
           <div className={`flex`}>
             <img
               src={ads[popUp].image}
@@ -63,7 +73,7 @@ const PopupAds = ({ handleClick }) => {
             {ads[popUp].body && <p className="pl-2">{ads[popUp].body}</p>}
           </div>
           <button
-            className={`bg-green-400 rounded p-1 m-2 justify-center`}
+            className={`${ads[popUp].buttonColor} rounded p-1 m-2 justify-center`}
             onClick={handlePopUp}
           >
             {ads[popUp].buttonText}
