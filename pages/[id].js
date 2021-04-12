@@ -15,6 +15,29 @@ const CustomPage = ({ invitation, error }) => {
       <Head>
         <title>I'm Booking You</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@tomjneill" />
+        <meta name="twitter:creator" content="@tomjneill" />
+        <meta name="twitter:title" content="I'm Booking You." />
+        <meta
+          name="twitter:description"
+          content="The best tool for all your passive aggressive meeting scheduling needs."
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.imbookingyou.com/social.png"
+        />
+        <meta
+          property="og:image"
+          content="https://www.imbookingyou.com/social.png"
+        />
+        <meta name="twitter:image:alt" content="" />
+        <meta
+          property="og:description"
+          content="The best tool for all your passive aggressive meeting scheduling needs."
+        />
+        <meta property="og:title" content="I'm Booking You." />
+        <meta property="og:url" content={"https://www.imbookingyou.com"} />
       </Head>
 
       <main className="flex flex-col items-center min-h-screen">
