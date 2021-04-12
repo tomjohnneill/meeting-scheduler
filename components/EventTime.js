@@ -3,6 +3,12 @@ import TimePicker from "../components/TimePicker";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import "react-day-picker/lib/style.css";
 import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
+dayjs.tz.guess();
 
 const EventTime = ({ option, defaultLength, onChange }) => {
   const [date, setDate] = useState(null);

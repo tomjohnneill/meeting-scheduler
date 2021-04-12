@@ -16,6 +16,12 @@ import Dark from "../components/dark";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import Header from "../components/Header";
 import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+
+import timezone from "dayjs/plugin/timezone";
+dayjs.extend(utc);
+dayjs.extend(timezone);
+dayjs.tz.guess();
 
 export default function GameStructure({ invitation }) {
   const [game, setGame] = useState(1);
@@ -148,7 +154,12 @@ export default function GameStructure({ invitation }) {
   }, [game]);
 
   const humanize = (date) => {
-    return `${dayjs(date).format("dddd")} at ${dayjs(date).format("h")}?`;
+    const hour =
+      dayjs(date).minute() !== 0
+        ? `${dayjs(date).format("h")}:${dayjs(date).format("mm")}`
+        : dayjs(date).format("h");
+
+    return `${dayjs(date).format("dddd")} at ${hour}?`;
   };
 
   const { options } = invitation || { options: [] };
