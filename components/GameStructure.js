@@ -1,22 +1,28 @@
-import Head from 'next/head';
-import { useEffect, useState } from 'react';
-import styles from '../styles/Home.module.css';
-import ButtonDodge from '../components/ButtonDodge';
-import HiddenCursor from '../components/HiddenCursor';
-import PrewrittenTweet from '../components/PrewrittenTweet';
-import ButtonOverload from '../components/ButtonOverload';
-import Maze from '../components/Maze';
-import GrowingShrinking from '../components/GrowingShrinking';
-import StIves from '../components/StIves';
-import AreYouRobot from '../components/AreYouRobot';
-import PowerBar from '../components/PowerBar';
-import Roulette from '../components/Roulette';
-import Accept from '../components/Accept';
-import Dark from '../components/dark';
+import Head from "next/head";
+import { useEffect, useState } from "react";
+import styles from "../styles/Home.module.css";
+import ButtonDodge from "../components/ButtonDodge";
+import HiddenCursor from "../components/HiddenCursor";
+import PrewrittenTweet from "../components/PrewrittenTweet";
+import ButtonOverload from "../components/ButtonOverload";
+import Maze from "../components/Maze";
+import GrowingShrinking from "../components/GrowingShrinking";
+import StIves from "../components/StIves";
+import AreYouRobot from "../components/AreYouRobot";
+import PowerBar from "../components/PowerBar";
+import Roulette from "../components/Roulette";
+import Accept from "../components/Accept";
 import PopupAds from '../components/PopupAds';
-import { FaRegCalendarAlt } from 'react-icons/fa';
-import Header from '../components/Header';
-import dayjs from 'dayjs';
+import Dark from "../components/dark";
+import { FaRegCalendarAlt } from "react-icons/fa";
+import Header from "../components/Header";
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+
+import timezone from "dayjs/plugin/timezone";
+dayjs.extend(utc);
+dayjs.extend(timezone);
+dayjs.tz.guess();
 
 export default function GameStructure({ invitation }) {
   const [game, setGame] = useState(1);
@@ -153,8 +159,18 @@ export default function GameStructure({ invitation }) {
     }
   }, [game]);
 
+<<<<<<< HEAD
   const humanize = date => {
     return `${dayjs(date).format('dddd')} at ${dayjs(date).format('h')}?`;
+=======
+  const humanize = (date) => {
+    const hour =
+      dayjs(date).minute() !== 0
+        ? `${dayjs(date).format("h")}:${dayjs(date).format("mm")}`
+        : dayjs(date).format("h");
+
+    return `${dayjs(date).format("dddd")} at ${hour}?`;
+>>>>>>> main
   };
 
   const { options } = invitation || { options: [] };
