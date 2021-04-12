@@ -12,6 +12,7 @@ import AreYouRobot from "../components/AreYouRobot";
 import PowerBar from "../components/PowerBar";
 import Roulette from "../components/Roulette";
 import Accept from "../components/Accept";
+import PopupAds from "../components/PopupAds";
 import Dark from "../components/dark";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import Header from "../components/Header";
@@ -68,6 +69,11 @@ export default function GameStructure({ invitation }) {
       mobile: true,
       name: "ButtonOverload",
       game: <ButtonOverload handleClick={advanceGame} />,
+    },
+    {
+      mobile: false,
+      name: "Ads",
+      game: <PopupAds handleClick={advanceGame} />,
     },
     {
       mobile: true,
@@ -170,11 +176,12 @@ export default function GameStructure({ invitation }) {
     "Thursday at 11?",
     "Thursday at 3?",
     "Friday at 9:30?",
-    "Monday at 12:30",
-    "Tuesday at 2",
+    "Monday at 12:30?",
+    "Tuesday at 2?",
     "Wednesday at 11am?",
     "Wednesday at 4?",
-    "Thursday at 11:30",
+    "Thursday at 15:30?",
+    "Friday at 12:30?",
     "Friday at 4?",
   ];
 
@@ -183,6 +190,7 @@ export default function GameStructure({ invitation }) {
       `That's annoying, how about ${timeString}`,
       `Really? It would be good to get something in the diary soon. How about ${timeString}`,
       `I know you're really busy, but it would be very helpful. I could do ${timeString}`,
+      `I would really appreciate it if you could fit me in. Perhaps ${timeString}`,
       `You're being a bit difficult now. How about ${timeString}`,
       `Now you're just taking the piss. What about ${timeString}`,
       `What about ${timeString}? Or do you have someone more important to meet?`,

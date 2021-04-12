@@ -1,20 +1,6 @@
 import Head from "next/head";
 import { useState } from "react";
 import styles from "../styles/Home.module.css";
-import ButtonDodge from "../components/ButtonDodge";
-import HiddenCursor from "../components/HiddenCursor";
-import PrewrittenTweet from "../components/PrewrittenTweet";
-import ButtonOverload from "../components/ButtonOverload";
-import Maze from "../components/Maze";
-import GrowingShrinking from "../components/GrowingShrinking";
-import StIves from "../components/StIves";
-import AreYouRobot from "../components/AreYouRobot";
-import PowerBar from "../components/PowerBar";
-import Roulette from "../components/Roulette";
-import Accept from "../components/Accept";
-import Dark from "../components/dark";
-import { FaRegCalendarAlt } from "react-icons/fa";
-import Header from "../components/Header";
 import GameStructure from "../components/GameStructure";
 
 export default function Home() {
