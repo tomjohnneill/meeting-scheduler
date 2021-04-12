@@ -12,7 +12,7 @@ import AreYouRobot from "../components/AreYouRobot";
 import PowerBar from "../components/PowerBar";
 import Roulette from "../components/Roulette";
 import Accept from "../components/Accept";
-import PopupAds from '../components/PopupAds';
+import PopupAds from "../components/PopupAds";
 import Dark from "../components/dark";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import Header from "../components/Header";
@@ -28,8 +28,8 @@ export default function GameStructure({ invitation }) {
   const [game, setGame] = useState(1);
   const [accept, setAccept] = useState(false);
 
-  const advanceGame = response => {
-    if (response === 'No') {
+  const advanceGame = (response) => {
+    if (response === "No") {
       setGame(game + 1);
     } else {
       setAccept(true);
@@ -42,27 +42,27 @@ export default function GameStructure({ invitation }) {
   const games = [
     {
       mobile: true,
-      name: 'ButtonDodge',
+      name: "ButtonDodge",
       game: <ButtonDodge handleClick={advanceGame} />,
     },
     {
       mobile: false,
-      name: 'GrowingShrinking',
+      name: "GrowingShrinking",
       game: <GrowingShrinking handleClick={advanceGame} />,
     },
     {
       mobile: true,
-      name: 'AreYouRobot',
+      name: "AreYouRobot",
       game: <AreYouRobot handleClick={advanceGame} />,
     },
     {
       mobile: false,
-      name: 'HiddenCursor',
+      name: "HiddenCursor",
       game: <HiddenCursor handleClick={advanceGame} />,
     },
     {
       mobile: true,
-      name: 'Roulette',
+      name: "Roulette",
       game: <Roulette handleClick={advanceGame} />,
     },
     {
@@ -72,32 +72,32 @@ export default function GameStructure({ invitation }) {
     },
     {
       mobile: false,
-      name: 'Ads',
+      name: "Ads",
       game: <PopupAds handleClick={advanceGame} />,
     },
     {
       mobile: true,
-      name: 'Dark',
+      name: "Dark",
       game: null,
     },
     {
       mobile: true,
-      name: 'PrewrittenTweet',
+      name: "PrewrittenTweet",
       game: <PrewrittenTweet handleClick={advanceGame} />,
     },
     {
       mobile: false,
-      name: 'Maze',
+      name: "Maze",
       game: <Maze handleClick={advanceGame} />,
     },
     {
       mobile: true,
-      name: 'PowerBar',
+      name: "PowerBar",
       game: <PowerBar handleClick={advanceGame} />,
     },
     {
       mobile: true,
-      name: 'StIves',
+      name: "StIves",
       game: <StIves handleClick={advanceGame} />,
     },
   ];
@@ -111,7 +111,7 @@ export default function GameStructure({ invitation }) {
           src="https://notfunatparties.substack.com/embed"
           width="480"
           height="320"
-          style={{ border: '1px solid #EEE', background: 'white' }}
+          style={{ border: "1px solid #EEE", background: "white" }}
           frameBorder="0"
           scrolling="no"
         ></iframe>
@@ -121,7 +121,7 @@ export default function GameStructure({ invitation }) {
           src="https://notfunatparties.substack.com/embed"
           width="100%"
           height="320"
-          style={{ border: '1px solid #EEE', background: 'white' }}
+          style={{ border: "1px solid #EEE", background: "white" }}
           frameBorder="0"
           scrolling="no"
         ></iframe>
@@ -148,10 +148,10 @@ export default function GameStructure({ invitation }) {
     if (game > 1) {
       let applicableGames = games;
       if (window.innerWidth < 736) {
-        applicableGames = games.filter(item => item.mobile);
+        applicableGames = games.filter((item) => item.mobile);
       }
       setGameList(applicableGames);
-      if (applicableGames[game - 1]?.name === 'Dark') {
+      if (applicableGames[game - 1]?.name === "Dark") {
         setDark(true);
       } else {
         setDark(false);
@@ -159,10 +159,6 @@ export default function GameStructure({ invitation }) {
     }
   }, [game]);
 
-<<<<<<< HEAD
-  const humanize = date => {
-    return `${dayjs(date).format('dddd')} at ${dayjs(date).format('h')}?`;
-=======
   const humanize = (date) => {
     const hour =
       dayjs(date).minute() !== 0
@@ -170,7 +166,6 @@ export default function GameStructure({ invitation }) {
         : dayjs(date).format("h");
 
     return `${dayjs(date).format("dddd")} at ${hour}?`;
->>>>>>> main
   };
 
   const { options } = invitation || { options: [] };
@@ -181,11 +176,12 @@ export default function GameStructure({ invitation }) {
     "Thursday at 11?",
     "Thursday at 3?",
     "Friday at 9:30?",
-    "Monday at 12:30",
-    "Tuesday at 2",
+    "Monday at 12:30?",
+    "Tuesday at 2?",
     "Wednesday at 11am?",
     "Wednesday at 4?",
-    "Thursday at 11:30",
+    "Thursday at 15:30?",
+    "Friday at 12:30?",
     "Friday at 4?",
   ];
 
@@ -194,6 +190,7 @@ export default function GameStructure({ invitation }) {
       `That's annoying, how about ${timeString}`,
       `Really? It would be good to get something in the diary soon. How about ${timeString}`,
       `I know you're really busy, but it would be very helpful. I could do ${timeString}`,
+      `I would really appreciate it if you could fit me in. Perhaps ${timeString}`,
       `You're being a bit difficult now. How about ${timeString}`,
       `Now you're just taking the piss. What about ${timeString}`,
       `What about ${timeString}? Or do you have someone more important to meet?`,
@@ -210,10 +207,10 @@ export default function GameStructure({ invitation }) {
       invitation?.options.length < game ||
       (gameList.length > 1 && gameList.length < game)
     ) {
-      return 'OK fine. Maybe this could have been an email.';
+      return "OK fine. Maybe this could have been an email.";
     } else if (game === 1) {
-      return `Hi ${invitation?.name || 'Karen'}, can you meet ${
-        options?.[0]?.start ? humanize(options[0].start) : 'next Tuesday at 4?'
+      return `Hi ${invitation?.name || "Karen"}, can you meet ${
+        options?.[0]?.start ? humanize(options[0].start) : "next Tuesday at 4?"
       }`;
     } else {
       if (invitation?.options) {
@@ -226,28 +223,28 @@ export default function GameStructure({ invitation }) {
 
   const acceptText = () => {
     if (game === 1) {
-      return 'Huh, that was easier than expected.';
+      return "Huh, that was easier than expected.";
     } else if (game < 5) {
       return "That wasn't too hard was it.";
     } else {
-      return 'Playing hard to get I see. Glad we got there in the end.';
+      return "Playing hard to get I see. Glad we got there in the end.";
     }
   };
 
   const defaultEvent = {
-    title: 'My birthday party',
-    description: 'Be there!',
-    start: '2021-12-25 18:00:00 +0100',
-    duration: [3, 'hour'],
+    title: "My birthday party",
+    description: "Be there!",
+    start: "2021-12-25 18:00:00 +0100",
+    duration: [3, "hour"],
   };
 
-  const generateEvent = option => {
+  const generateEvent = (option) => {
     return {
-      title: invitation.title || 'Event',
-      description: '',
+      title: invitation.title || "Event",
+      description: "",
       start: option.start,
       guests: invitation.email ? [invitation.email] : [],
-      duration: [dayjs(option.end).diff(dayjs(option.start), 'hours'), 'hour'],
+      duration: [dayjs(option.end).diff(dayjs(option.start), "hours"), "hour"],
     };
   };
 

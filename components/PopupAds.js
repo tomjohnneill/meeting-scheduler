@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 const PopupAds = ({ handleClick }) => {
   const [popUp, setPopUp] = useState(null);
@@ -19,25 +19,25 @@ const PopupAds = ({ handleClick }) => {
 
   const ads = [
     {
-      title: 'Congratulations!!!!!',
-      titleStyle: 'font-bold',
+      title: "Congratulations!!!!!",
+      titleStyle: "font-bold",
       image:
-        'https://cdn.vox-cdn.com/thumbor/XKrMqqGnvhJqbwt9DvTjGDPcG7M=/1600x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/22341197/doge.gif',
+        "https://cdn.vox-cdn.com/thumbor/XKrMqqGnvhJqbwt9DvTjGDPcG7M=/1600x0/filters:no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/22341197/doge.gif",
       body: "You're our 5000th visitor! You WIN 50,000M DogeCoin",
-      buttonText: 'CLICK TO CLAIM YOUR PRIZE',
-      buttonColor: 'bg-green-500',
-      bar: 'bg-blue-900 h-7',
-      animation: 'flashy',
-      border: 'border border-blue-900',
+      buttonText: "CLICK TO CLAIM YOUR PRIZE",
+      buttonColor: "bg-green-500",
+      bar: "bg-blue-900 h-7",
+      animation: "flashy",
+      border: "border border-blue-900",
     },
     {
-      title: '60% of the time, it works every time',
-      titleStyle: 'text-red-500 font-bold',
-      image: '/ads/sexpanther.png',
-      buttonText: 'ORDER YOURS TODAY',
-      buttonColor: 'bg-red-500 flashy',
-      bar: 'bg-red-500 h-7',
-      border: 'border-4 border-red-500 border-dashed',
+      title: "60% of the time, it works every time",
+      titleStyle: "text-red-500 font-bold",
+      image: "/ads/sexpanther.png",
+      buttonText: "ORDER YOURS TODAY",
+      buttonColor: "bg-red-500 flashy",
+      bar: "bg-red-500 h-7",
+      border: "border-4 border-red-500 border-dashed",
     },
   ];
 
@@ -58,7 +58,7 @@ const PopupAds = ({ handleClick }) => {
           <div className={`flex justify-center`}>
             <img
               src={ads[popUp].image}
-              className={ads[popUp].body ? 'w-32' : 'h-40'}
+              className={ads[popUp].body ? "w-32" : "h-40"}
             />
             {ads[popUp].body && <p className="pl-2">{ads[popUp].body}</p>}
           </div>
@@ -91,15 +91,12 @@ const PopupAds = ({ handleClick }) => {
       {ads[popUp] && <Ads />}
       <div>
         {
-          <button
-            onClick={() => handleClick('No')}
-            className="px-2 py-1 border rounded border-gray-300 opacity-80 text-gray-600 transition-all"
-          >
+          <button onClick={() => handleClick("No")} className="no-button">
             No
           </button>
         }
 
-        <button onClick={() => handleClick('Yes')} className="yes-button ml-2">
+        <button onClick={() => handleClick("Yes")} className="yes-button ml-4">
           Yes
         </button>
       </div>
